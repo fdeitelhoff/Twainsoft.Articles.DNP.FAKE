@@ -47,6 +47,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Twainsoft.SimpleApplication.Lib\Twainsoft.SimpleApplication.Lib.csproj">
+      <Project>{49E6CC6F-D03C-4108-AC3F-E91A8AE4157F}</Project>
+      <Name>Twainsoft.SimpleApplication.Lib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

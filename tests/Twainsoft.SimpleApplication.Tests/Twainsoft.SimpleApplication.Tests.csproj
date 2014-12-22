@@ -35,7 +35,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\..\packages\FluentAssertions.3.2.2\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions.Core">
+      <HintPath>..\..\packages\FluentAssertions.3.2.2\lib\net45\FluentAssertions.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.3.0.0-alpha-3\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,7 +61,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CalculatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Twainsoft.SimpleApplication.Lib\Twainsoft.SimpleApplication.Lib.csproj">
+      <Project>{49E6CC6F-D03C-4108-AC3F-E91A8AE4157F}</Project>
+      <Name>Twainsoft.SimpleApplication.Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
