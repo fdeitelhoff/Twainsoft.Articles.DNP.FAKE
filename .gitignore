@@ -188,3 +188,4 @@ docs/content/release-notes.md
 # Exclude project specific directories and files
 # ===================================================
 Twainsoft.Articles.DNP.FAKE.sln.ide
+/output
