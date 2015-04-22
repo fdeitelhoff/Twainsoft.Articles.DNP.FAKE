@@ -2,6 +2,9 @@
 #r "packages/FAKE/tools/FakeLib.dll"
 open Fake 
 
+// Get all external references via NuGet
+RestorePackages()
+
 // Properties
 let outputDir = "./output/"
 let buildDir = outputDir + "build/"
