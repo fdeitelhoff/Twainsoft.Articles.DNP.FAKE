@@ -3,3 +3,4 @@ NUGET
   specs:
     FAKE (3.12.2)
     NuGet.CommandLine (2.8.5)
+    NUnit.Runners (2.6.4)

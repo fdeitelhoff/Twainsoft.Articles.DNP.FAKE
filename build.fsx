@@ -27,6 +27,14 @@ Target "BuildTest" (fun _ ->
       |> Log "TestBuild-Output: "
 )
 
+Target "RunTest" (fun _ ->
+    !! (testDir + "/*.Tests.dll")
+      |> NUnit (fun p ->
+          {p with
+             DisableShadowCopy = true;
+             OutputFile = testDir + "TestResults.xml" })
+)
+
 Target "Deploy" (fun _ ->
     trace "Deploying the application..."
 )
@@ -35,6 +43,7 @@ Target "Deploy" (fun _ ->
 "Clean"
    ==> "BuildApp"
    ==> "BuildTest"
+   ==> "RunTest"
    ==> "Deploy"
 
 // Start the build process
