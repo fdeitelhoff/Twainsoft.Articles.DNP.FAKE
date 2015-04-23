@@ -9,6 +9,7 @@ RestorePackages()
 let outputDir = "./output/"
 let buildDir = outputDir + "build/"
 let testDir = outputDir + "tests/"
+let testResults = testDir + "TestResults.xml"
 
 // Target definitions
 Target "Clean" (fun _ ->
@@ -32,7 +33,7 @@ Target "RunTest" (fun _ ->
       |> NUnit (fun p ->
           {p with
              DisableShadowCopy = true;
-             OutputFile = testDir + "TestResults.xml" })
+             OutputFile = testResults })
 )
 
 Target "Deploy" (fun _ ->
