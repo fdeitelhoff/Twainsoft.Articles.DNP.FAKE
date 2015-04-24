@@ -11,6 +11,7 @@ let outputDir = "./output/"
 let buildDir = outputDir + "build/"
 let testDir = outputDir + "tests/"
 let deployDir = outputDir + "deploy/"
+let packagingDir = outputDir + "nuget-packaging/"
 let testResults = testDir + "TestResults.xml"
 
 let version = "0.1"
@@ -78,12 +79,32 @@ Target "DeployZip" (fun _ ->
     |> Zip buildDir (deployDir + "Calculator." + version + ".zip")
 )
 
+Description "Creates a NuGet package without publishing it."
+Target "CreateNuGetPackage" (fun _ ->
+    CopyFiles (packagingDir) !! (buildDir + "/**/*.*")
+
+    NuGet (fun p -> 
+        {p with
+            Authors = ["Fabian Deitelhoff"]
+            Project = "Calculator"
+            Description = "Sample Project for the dotnetpro FAKE Article"
+            OutputPath = deployDir
+            Summary = "Sample Project for the dotnetpro FAKE Article"
+            WorkingDir = packagingDir
+            Version = version
+            AccessKey = "ABCDEFG"
+            Files = ["*.*", Some "lib/net45", Some "*.pdb;*.exe;*.config"]
+            Publish = false }) 
+            "./resources/calculator.nuspec"
+)
+
 // Target dependencies
 "Clean"
    ==> "CreateAssemblyInfos"
    ==> "BuildApp"
    ==> "BuildTest"
    ==> "RunTest"
+   ==> "CreateNuGetPackage"
    ==> "DeployZip"
 
 // Start the build process
