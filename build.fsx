@@ -19,7 +19,7 @@ let version = "0.1"
 // Target definitions
 Description "Cleans the complete output."
 Target "Clean" (fun _ ->
-    CleanDirs [outputDir; deployDir]
+    CleanDirs [outputDir; testDir; deployDir]
 )
 
 Description "Creates assembly info files for all three projects."
@@ -98,10 +98,22 @@ Target "CreateNuGetPackage" (fun _ ->
             "./resources/calculator.nuspec"
 )
 
+Target "FxCopCheck" (fun () ->  
+    !! (buildDir + @"\**\*.dll") 
+    ++ (buildDir + @"\**\*.exe") 
+    |> FxCop 
+        (fun p -> 
+            {p with
+              ReportFileName = testDir + "FXCopResults.xml"
+              //FailOnError = FxCopErrorLevel.CriticalWarning
+              ToolPath = @"C:\Program Files (x86)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop\FxCopCmd.exe"})
+)
+
 // Target dependencies
 "Clean"
    ==> "CreateAssemblyInfos"
    ==> "BuildApp"
+   ==> "FxCopCheck"
    ==> "BuildTest"
    ==> "RunTest"
    ==> "CreateNuGetPackage"
