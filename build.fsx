@@ -1,7 +1,11 @@
-// Include libraries
+// Include FAKE libraries
 #r "packages/FAKE/tools/FakeLib.dll"
 open Fake 
 open Fake.AssemblyInfoFile
+
+// Include custom tasks
+#r @"tools\tasks\Twainsoft.Articles.DNP.FAKE.RandomTask.dll"
+open Twainsoft.Articles.DNP.FAKE.RandomTask
 
 // Get all external references via NuGet
 RestorePackages()
@@ -14,7 +18,7 @@ let deployDir = outputDir + "deploy/"
 let packagingDir = outputDir + "nuget-packaging/"
 let testResults = testDir + "TestResults.xml"
 
-let version = "0.1"
+let version = RandomVersionTask.RandomVersion(4, 18)
 
 // Target definitions
 Description "Cleans the complete output."
