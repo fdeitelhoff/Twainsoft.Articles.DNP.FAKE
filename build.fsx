@@ -102,7 +102,7 @@ Target "CreateNuGetPackage" (fun _ ->
             "./resources/calculator.nuspec"
 )
 
-Target "FxCopCheck" (fun () ->  
+Target "FxCopCheck" (fun _ ->  
     !! (buildDir + @"\**\*.dll") 
     ++ (buildDir + @"\**\*.exe") 
     |> FxCop 
