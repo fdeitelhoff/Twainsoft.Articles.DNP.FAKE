@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescriptionAttribute("Sample Project for the dotnetpro FAKE Article")]
 [assembly: GuidAttribute("DC26E96E-23D5-45D0-B19C-FFDD0432402F")]
 [assembly: AssemblyProductAttribute("Calculator")]
-[assembly: AssemblyVersionAttribute("7.5")]
-[assembly: AssemblyFileVersionAttribute("7.5")]
+[assembly: AssemblyVersionAttribute("9.12")]
+[assembly: AssemblyFileVersionAttribute("9.12")]
 namespace System {
     internal static class AssemblyVersionInformation {
-        internal const string Version = "7.5";
+        internal const string Version = "9.12";
     }
 }
