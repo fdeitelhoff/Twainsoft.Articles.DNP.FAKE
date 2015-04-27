@@ -18,7 +18,11 @@ let deployDir = outputDir + "deploy/"
 let packagingDir = outputDir + "nuget-packaging/"
 let testResults = testDir + "TestResults.xml"
 
-let version = RandomVersionTask.RandomVersion(4, 18)
+// Fetch the version from TeamCity or use the custom random version task as default.
+let version =
+  match buildServer with
+  | TeamCity -> buildVersion
+  | _ -> RandomVersionTask.RandomVersion(4, 18)
 
 // Target definitions
 Description "Cleans the complete output."
