@@ -127,5 +127,5 @@ Target "FxCopCheck" (fun _ ->
    ==> "CreateNuGetPackage"
    ==> "DeployZip"
 
-// Start the build process
+// Start the build process with a given target or the default target DeployZip
 RunTargetOrDefault "DeployZip"
