@@ -22,7 +22,7 @@ let testResults = testDir + "TestResults.xml"
 let version =
   match buildServer with
   | TeamCity -> buildVersion
-  | _ -> RandomVersionTask.RandomVersion(4, 18)
+  | _ -> "0.2" // RandomVersionTask.RandomVersion(4, 18)
 
 // Target definitions
 Description "Cleans the complete output."
